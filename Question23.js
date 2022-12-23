@@ -1,5 +1,5 @@
 //A perfect number is a number for which the sum of its proper divisors is exactly equal to the number.
-// For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28, 
+// For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28,
 //which means that 28 is a perfect number.
 
 //A number n is called deficient if the sum of its proper divisors is less than n and it is called abundant if this sum exceeds n.
@@ -8,39 +8,64 @@
 
 //Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
-
-function sumOfProperDivisors(number){
+function sumOfProperDivisors(number) {
     var sumOfProper = 0;
-    for(let i = 1 ; i < number; i++){
-        if(number % i == 0){
-            sumOfProper += i
-        }
+    for (let i = 1; i < number; i++) {
+      if (number % i == 0) {
+        sumOfProper += i;
+      }
     }
-    return sumOfProper
-
-}
-
-function isDeficient(number){
-    if(sumOfProperDivisors(number) > number){
-        return true
+    return sumOfProper;
+  }
+  
+  function isDeficient(number) {
+    if (sumOfProperDivisors(number) > number) {
+      return true;
+    } else {
+      return false;
     }
-    else{
-        return false
-    }
-}
-function pushDeficient(number){
+  }
+  function pushDeficient(number) {
     var arrayDeficient = [];
-    for(let j = 1 ; j< number; j++){
-        if(isDeficient(j)){
-        arrayDeficient.push()
-        }  
+    for (let j = 1; j < number; j++) {
+      if (isDeficient(j)) {
+        arrayDeficient.push(j);
+      }
     }
-    return arrayDeficient
-}
-
-function findPossibleTwoSumOfAbundants(number){
-    for(let m = 0 ; m<pushDeficient(number).length; m++){
-
+    return arrayDeficient;
+  }
+  
+  function combinationTwoItemsOfArray(array) {
+    var emptyArr = [];
+    for (let v = 0; v < array.length; v++) {
+      for (let b = v + 1; b < array.length; b++) {
+        emptyArr.push(array[v] + array[b]);
+      }
     }
-
-}
+    return emptyArr;
+  }
+  
+  var potentialAbundantArr = [];
+  for (let r = 1; r < 28123; r++) {
+    potentialAbundantArr.push(r);
+  }
+  function sumOfAllAbundantFormulated(number) {
+    for (
+      let a = 0;
+      a < combinationTwoItemsOfArray(pushDeficient(number)).length;
+      a++
+    ) {
+      potentialAbundantArr.splice(
+        potentialAbundantArr.indexOf(
+          combinationTwoItemsOfArray(pushDeficient(number))[a]
+        ),
+        1
+      );
+    }
+    return potentialAbundantArr;
+  }
+  
+  console.log(combinationTwoItemsOfArray(pushDeficient(28123)));
+  console.log(potentialAbundantArr);
+  console.log(sumOfAllAbundantFormulated(2812));
+  
