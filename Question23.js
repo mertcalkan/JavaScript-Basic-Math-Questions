@@ -34,38 +34,47 @@ function sumOfProperDivisors(number) {
     }
     return arrayDeficient;
   }
+ 
   
   function combinationTwoItemsOfArray(array) {
     var emptyArr = [];
+    
     for (let v = 0; v < array.length; v++) {
       for (let b = v + 1; b < array.length; b++) {
-        emptyArr.push(array[v] + array[b]);
+        if((array[v] + array[b] <= 28124)  ){
+            emptyArr.push(array[v] + array[b]);
+          
+        }
+      
       }
     }
+    
     return emptyArr;
   }
   
   var potentialAbundantArr = [];
-  for (let r = 1; r < 28123; r++) {
+  for (let r = 1; r <= 28124; r++) {
     potentialAbundantArr.push(r);
   }
-  function sumOfAllAbundantFormulated(number) {
-    for (
-      let a = 0;
-      a < combinationTwoItemsOfArray(pushDeficient(number)).length;
-      a++
-    ) {
-      potentialAbundantArr.splice(
-        potentialAbundantArr.indexOf(
-          combinationTwoItemsOfArray(pushDeficient(number))[a]
-        ),
-        1
-      );
+
+  var clearedArray = [...new Set(combinationTwoItemsOfArray(pushDeficient(28123)))]
+  console.log(clearedArray)
+  console.log(clearedArray.length)
+  console.log(clearedArray[clearedArray.length -1 ])
+  function findDifference(arr1 , arr2){
+    var sum = 0 , sum1 = 0 
+    for(let d = 0; d < arr1.length; d++){
+      sum += arr1[d]
+    
     }
-    return potentialAbundantArr;
+    for(let s = 0; s < arr2.length; s++){
+      sum1 += arr2[s]
+    }
+    return sum - sum1
   }
-  
-  console.log(combinationTwoItemsOfArray(pushDeficient(28123)));
+ 
+  console.log((pushDeficient(28123)));
+  console.log(combinationTwoItemsOfArray(pushDeficient(28123))[combinationTwoItemsOfArray(pushDeficient(28123)).length -1];
   console.log(potentialAbundantArr);
-  console.log(sumOfAllAbundantFormulated(2812));
+  console.log(findDifference(potentialAbundantArr , clearedArray ));
   
