@@ -5162,7 +5162,7 @@ var names = ["MARY",
   "BRODERICK",
   "ALONSO"]
 
-  var letters =  "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('').join(',')
+  var letters =  "abcdefghıjklmnopqrstuvwxyz".toUpperCase().split('').join(',')
   let sumOfAllVocabValue = 0;
 
   for(let i=0; i<names.length; i++){

@@ -41,7 +41,7 @@ function sumOfProperDivisors(number) {
     
     for (let v = 0; v < array.length; v++) {
       for (let b = v + 1; b < array.length; b++) {
-        if((array[v] + array[b] <= 28124)  ){
+        if((array[v] + array[b] <= 28123)  ){
             emptyArr.push(array[v] + array[b]);
           
         }
@@ -53,7 +53,7 @@ function sumOfProperDivisors(number) {
   }
   
   var potentialAbundantArr = [];
-  for (let r = 1; r <= 28124; r++) {
+  for (let r = 1; r <= 28123; r++) {
     potentialAbundantArr.push(r);
   }
 
@@ -74,7 +74,7 @@ function sumOfProperDivisors(number) {
   }
  
   console.log((pushDeficient(28123)));
-  console.log(combinationTwoItemsOfArray(pushDeficient(28123))[combinationTwoItemsOfArray(pushDeficient(28123)).length -1];
+  console.log(combinationTwoItemsOfArray(pushDeficient(28123))[combinationTwoItemsOfArray(pushDeficient(28123)).length -1]);
   console.log(potentialAbundantArr);
   console.log(findDifference(potentialAbundantArr , clearedArray ));
   
