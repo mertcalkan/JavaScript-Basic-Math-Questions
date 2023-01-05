@@ -26,7 +26,6 @@ function factorial(n, prevFactValues = []) {
  
 function greaterThanOneMillionCombinations(){
     var array = []
-    var counter = 0;
     for(let i = 1 ; i <= 100 ; i++){
         for(let j = 0 ; j <= i ; j++){
             if(combination(i,j) > 1000000){
