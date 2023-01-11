@@ -34,7 +34,7 @@ function primeAmong(num1, num2) {
   }
   return bool
 }
-console.log(primeAmong(23523531 , 235263634))
+console.log(primeAmong(10,20))
 console.log(countingFractions())
 
 
