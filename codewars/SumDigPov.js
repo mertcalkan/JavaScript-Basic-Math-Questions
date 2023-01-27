@@ -37,3 +37,6 @@ function sumDigPow(a, b) {
   }
   console.log(isHavingProperty(135))
   console.log(sumDigPow(1,14630))
+
+
+  
