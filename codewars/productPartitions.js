@@ -1,24 +1,28 @@
-var counter = 0;
-var counterSec = 0;
-// baseParam of make array of fractions of loop.
-let arrayInMainFunc = [];
-let array = []; //baseArray of make array of fractions of loop.
-function prodIntPart(number) {
-  var cloneNumber = number;
-  for (let k = 2; k <= number / k; k++) {
-    if (cloneNumber % k == 0) {
-      counter++;
-      arrayInMainFunc.push(k)
-    }
-  }
-  
-  // for (let j = 2; j <= number / j; j++) {
-  //   if (cloneNumber == 1) {
-  //     prodIntPart(number / j);
-  //   }
-  // }
-  return [makeCalc(number , 2),  getMinimalFactorArr(number)];
-}
+// Given a natural number n, we want to know in how many ways we may express these numbers as product of other numbers.
+
+// For example the number
+
+//  18 = 2 x 9 = 3 x 6 = 2 x 3 x 3 # (we do not consider the product 18 x 1), (3 ways)
+// See this example a bit more complicated,
+
+// 60 = 2 x 30 = 3 x 20 =  4 x 15 = 5 x 12 = 6 x 10 = 2 x 2 x 15 = 2 x 3 x 10 = 2 x 5 x 6 =  3 x 4 x 5 = 2 x 2 x 3 x 5 (10 ways)
+// 24
+// 2 12 2 3
+// 2 2 6
+// 2 3 4
+// 2 24
+// 2 2 12
+// 2 2 2 6
+// 2 2 2 2 3
+// sonuncu asalsa.
+// veya bölümü kendinden kucuk oluyosa.
+// tek
+// 2 12
+// 3 8
+// 4 6
+// 2 2 6
+// 2 3 4
+// 2 2 2 3
 
 function getMinimalFactorArr(number) {
   var result = [];
@@ -31,28 +35,48 @@ function getMinimalFactorArr(number) {
       }
     }
   }
-  return result  
+  return result;
 }
 
-function makeCalc(number, v) {
-  var clone = number;
-  for (v; v <= clone / v; v++) {
-    if (number % v == 0) {
-      while (clone % v == 0) {
-        clone = clone / v;
-        makeCalc(clone , v)
-      }
-      counterSec++
-      
-      
+function isPrime(num) {
+  var isPrime = true;
+  for (let j = 2; j < num; j++) {
+    if (num % j == 0) {
+      isPrime = false;
+      break;
+    } else {
+      isPrime = true;
     }
   }
-  
-  
-  
-  return counterSec;
+  return isPrime;
 }
-console.log(prodIntPart(18));
-console.log(prodIntPart(24));
-console.log(prodIntPart(60));
-console.log(prodIntPart(54));
+
+var sum = 0;
+var g = 2;
+var arr = [];
+
+function calcFactors(number) {
+  for (let b = g; b <= number / b; b++) {
+    if (number % b == 0) {
+      arr.push([b, number / b]);
+    }
+  }
+  sum += arr.length;
+  arr.forEach(function (el) {
+    for (let l = el.at(-2); l <= el.at(-1) / el.at(-2); l++) {
+      if (el.at(-1) % l == 0) {
+        arr.push(concatArr(el, l));
+      }
+    }
+  });
+  return arr;
+}
+
+console.log(calcFactors(60));
+
+function concatArr(arr, div) {
+  arr.at(-2) == div;
+  arr.push(arr.at(-1) / div);
+  arr.at(-2) == div
+  return arr;
+}
