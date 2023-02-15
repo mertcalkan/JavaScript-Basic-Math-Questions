@@ -1,30 +1,30 @@
 function buddy(start, limit) {
-    //we'll use nested for loop here...
-//  for(let i = start ; i <= limit ; i++){
-//     for(let j = i ; j <)
-//  }
-
-  if ((sumDivider(start) - 1 == limit) && (sumDivider(limit) - 1 == start)) {
-    if (sumDivider(start) - 1 < sumDivider(limit) - 1) {
-      return [sumDivider(start) - 1, sumDivider(limit) - 1];
-    } else {
-      return [sumDivider(limit) - 1, sumDivider(start) - 1];
-    }
-  } else {
-    return "Nothing";
+  for (let n = start; n < limit; n++) {
+  
+      if ( n < sumDivider(n) - 1) {
+        return [n, sumDivider(n) - 1];
+      } else {
+        if (n == limit - 1) return "Nothing";
+      }
+    
+    
   }
 }
 
+
+
 function sumDivider(number) {
-  let result = 0;
-  for (let i = 1; i < number; i++) {
-    if (number % i == 0) {
-      result += i;
+  let result = 1;
+
+  for (let i = 2; i < number; i++) {
+    if (number % i == 0 && number / i > i ) {
+      result += i + number / i;
     }
   }
   return result;
 }
-
-
-console.log(sumDivider(10))
-console.log(buddy(10,50))
+// console.log(sumDivider(105));
+console.log(sumDivider(35))
+console.log(sumDivider(64))
+console.log(sumDivider(sumDivider(35) - 1) -1)
+ console.log(buddy(23, 4669));
